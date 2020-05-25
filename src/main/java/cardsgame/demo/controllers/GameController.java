@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 
 @RestController
 @RequestMapping("/api/game")
@@ -26,5 +25,10 @@ public class GameController {
     public ResponseEntity<?> endGame(){
         String message = game.endGame();
         return ResponseEntity.ok(message);
+    }
+    @GetMapping
+    @RequestMapping("/gameStatus")
+    public ResponseEntity<?>gameStatus(){
+        return ResponseEntity.ok(game.getStatus());
     }
 }
