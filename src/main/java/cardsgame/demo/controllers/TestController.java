@@ -19,6 +19,7 @@ public class TestController {
     @GetMapping("/pyConnectTest")
     public TestResponse nextCard(@RequestParam String card){
         logger.info(card);
+        game.getNextCard(card);
         return new TestResponse(card);
     }
 }

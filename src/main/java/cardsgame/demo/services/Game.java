@@ -1,42 +1,50 @@
 package cardsgame.demo.services;
 
+import cardsgame.demo.controllers.TestController;
+import cardsgame.demo.model.GameEvent;
 import cardsgame.demo.model.GameStatus;
 import cardsgame.demo.payload.request.StartGameRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Game {
-    private boolean gameRunning = false;
-    private GameStatus gameStatus = null;
-    public boolean isGameRunning() {
-        return gameRunning;
-    }
+    Logger logger = LoggerFactory.getLogger(Game.class);
+    private GameStatus gameStatus = new GameStatus();
 
-    private void setGameRunning(boolean gameRunning) {
-        this.gameRunning = gameRunning;
-    }
 
     public String startGame(){
-        if(isGameRunning()){
+        if(gameStatus.isGameRunning()){
             return "Game is already started";
         }
         else{
-            setGameRunning(true);
-            gameStatus = new GameStatus();
+            gameStatus = new GameStatus(GameEvent.RUNNING);
+
             return "Game Started";
         }
     }
 
     public String endGame() {
-        if(!isGameRunning()){
+        if(!gameStatus.isGameRunning()){
             return "Game is not running";
         }else{
-            this.setGameRunning(false);
+            gameStatus = new GameStatus();
             return "Game ended";
         }
     }
 
     public Object getStatus() {
      return null;
+    }
+    public void getNextCard(String card){
+        if(gameStatus.isGameRunning()){
+            logger.info("Card received" + card);
+
+
+        }
+        else{
+            logger.info("Card received, but game is not running");
+        }
     }
 }
