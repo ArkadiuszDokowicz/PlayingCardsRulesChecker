@@ -37,7 +37,8 @@ public class Game {
     public Object getStatus() {
      return null;
     }
-    public void getNextCard(String card){
+
+    public void setNextCard(String card){
         if(gameStatus.isGameRunning()){
             logger.info("Card received" + card);
 

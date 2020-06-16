@@ -20,7 +20,7 @@ public class GameController {
         String message = game.startGame();
         return ResponseEntity.ok(message);
     }
-    @GetMapping
+    @PostMapping
     @RequestMapping("/endGame")
     public ResponseEntity<?> endGame(){
         String message = game.endGame();
