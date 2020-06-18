@@ -16,8 +16,8 @@ public enum CardNumber {
     Ten("Ten"),
     Jack("Jack"),
     Queen("Queen"),
-    King("King");
-
+    King("King"),
+    Ace("Ace");
 
     //TODO next cards
 
@@ -27,4 +27,10 @@ public enum CardNumber {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "CardNumber{" +
+                "value='" + value + '\'' +
+                '}';
     }
+}

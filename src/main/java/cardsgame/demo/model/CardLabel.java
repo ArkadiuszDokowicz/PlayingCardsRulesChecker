@@ -14,4 +14,11 @@ public enum CardLabel {
     CardLabel(String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "CardLabel{" +
+                "value='" + value + '\'' +
+                '}';
+    }
 }

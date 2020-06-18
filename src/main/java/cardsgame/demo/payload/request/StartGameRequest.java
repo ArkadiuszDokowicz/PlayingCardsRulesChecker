@@ -5,6 +5,7 @@ import cardsgame.demo.model.GameType;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+@Deprecated
 public class StartGameRequest {
 
     @NotEmpty

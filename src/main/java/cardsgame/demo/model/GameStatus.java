@@ -1,6 +1,5 @@
 package cardsgame.demo.model;
 
-import cardsgame.demo.GameReferee.GameReferee;
 import cardsgame.demo.GameReferee.MacauGameReferee;
 
 public class GameStatus {
@@ -9,7 +8,15 @@ public class GameStatus {
     private GameEvent gameEvent;
     private String message = null;
     private boolean GameRunning;
-    private GameReferee gameReferee;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public GameStatus() {
         this.gameEvent = GameEvent.NOT_STARTED;
@@ -17,18 +24,8 @@ public class GameStatus {
         this.GameRunning = false;
     }
 
-    public void playCard(PlayingCard nextCard){
-        if(gameReferee.validMove(this.currentPlayingCard,nextCard)){
-            this.setGameEvent(GameEvent.GOOD_MOVE);
-        }else{
-            this.setGameEvent(GameEvent.ERROR);
-            this.message="One of the rules of the game was broken, check your move again!";
-        }
-    }
-
     public GameStatus(GameEvent gameEvent){
         this.gameEvent=gameEvent;
-        this.gameReferee = new MacauGameReferee();
     }
 
     public PlayingCard getCurrentPlayingCard() {
@@ -36,6 +33,7 @@ public class GameStatus {
     }
 
     public void setCurrentPlayingCard(PlayingCard currentPlayingCard) {
+        this.previousPlayingCard = this.currentPlayingCard;
         this.currentPlayingCard = currentPlayingCard;
     }
 
@@ -65,6 +63,6 @@ public class GameStatus {
     }
 
     public boolean isGameRunning() {
-        return GameRunning;
+        return !this.gameEvent.equals(GameEvent.NOT_STARTED);
     }
 }

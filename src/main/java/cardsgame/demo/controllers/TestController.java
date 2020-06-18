@@ -18,7 +18,7 @@ public class TestController {
 
     @GetMapping("/pyConnectTest")
     public TestResponse nextCard(@RequestParam String card){
-        logger.info(card);
+        logger.info("input from pyCamera :"+card);
         game.setNextCard(card);
         return new TestResponse(card);
     }
