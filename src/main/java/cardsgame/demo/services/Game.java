@@ -4,6 +4,7 @@ import cardsgame.demo.GameReferee.GameReferee;
 import cardsgame.demo.GameReferee.MacauGameReferee;
 import cardsgame.demo.model.GameEvent;
 import cardsgame.demo.model.GameStatus;
+import cardsgame.demo.model.MoveFeedback;
 import cardsgame.demo.model.PlayingCard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +44,7 @@ public class Game {
             String oldGameName = gameStatus.getName();
             gameStatus = new GameStatus();
             logger.info("end game :"+oldGameName);
-            return "Game ended";
+            return "Game end";
         }
     }
 
@@ -70,13 +71,14 @@ public class Game {
         }
     }
     private boolean playCard(PlayingCard nextCard){
-        if(gameReferee.validMove(gameStatus.getCurrentPlayingCard(),nextCard)){
+        MoveFeedback feedback = gameReferee.validMove(gameStatus.getCurrentPlayingCard(),nextCard);
+        if(feedback.getGameEvent().equals(GameEvent.GOOD_MOVE)){
             this.gameStatus.setGameEvent(GameEvent.GOOD_MOVE);
-            this.gameStatus.setMessage("Correct Move");
+            this.gameStatus.setMessage(feedback.getMesssage());
             return  true;
         }else{
             this.gameStatus.setGameEvent(GameEvent.ERROR);
-            this.gameStatus.setMessage("One of the rules of the game has been broken, check your move again!");
+            this.gameStatus.setMessage("One of the game rules has been broken, check your move !");
             return false;
         }
     }

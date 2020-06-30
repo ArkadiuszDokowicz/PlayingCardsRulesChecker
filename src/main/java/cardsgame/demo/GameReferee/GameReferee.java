@@ -1,7 +1,8 @@
 package cardsgame.demo.GameReferee;
 
+import cardsgame.demo.model.MoveFeedback;
 import cardsgame.demo.model.PlayingCard;
 
 public interface GameReferee {
-    boolean validMove (PlayingCard first,PlayingCard next);
+    MoveFeedback validMove (PlayingCard first, PlayingCard next);
 }
