@@ -3,6 +3,8 @@ package cardsgame.demo.model;
 import cardsgame.demo.GameReferee.MacauGameReferee;
 
 public class GameStatus {
+
+    private int id = 0;
     private PlayingCard currentPlayingCard =null;
     private PlayingCard previousPlayingCard= null;
     private GameEvent gameEvent;
@@ -22,6 +24,14 @@ public class GameStatus {
         this.gameEvent = GameEvent.NOT_STARTED;
         this.message = "Game is not running";
         this.GameRunning = false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public GameStatus(GameEvent gameEvent){
@@ -50,6 +60,7 @@ public class GameStatus {
     }
 
     public void setGameEvent(GameEvent gameEvent) {
+        this.id++;
         this.gameEvent = gameEvent;
         this.GameRunning= !this.gameEvent.equals(GameEvent.NOT_STARTED);
     }
@@ -64,5 +75,15 @@ public class GameStatus {
 
     public boolean isGameRunning() {
         return !this.gameEvent.equals(GameEvent.NOT_STARTED);
+    }
+
+    @Override
+    public String toString() {
+        return "GameStatus{" +
+                "currentPlayingCard=" + currentPlayingCard +
+                ", previousPlayingCard=" + previousPlayingCard +
+                ", gameEvent=" + gameEvent +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

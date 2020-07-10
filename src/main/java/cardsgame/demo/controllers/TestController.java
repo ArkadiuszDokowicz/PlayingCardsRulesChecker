@@ -20,6 +20,7 @@ public class TestController {
     public TestResponse nextCard(@RequestParam String card){
         logger.info("input from pyCamera :"+card);
         game.setNextCard(card);
+        logger.info("game status: "+ game.getGameStatus().toString() );
         return new TestResponse(card);
     }
 }

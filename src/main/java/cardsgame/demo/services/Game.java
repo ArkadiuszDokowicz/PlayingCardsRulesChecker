@@ -78,7 +78,7 @@ public class Game {
             return  true;
         }else{
             this.gameStatus.setGameEvent(GameEvent.ERROR);
-            this.gameStatus.setMessage("One of the game rules has been broken, check your move !");
+            this.gameStatus.setMessage(feedback.getMesssage());
             return false;
         }
     }

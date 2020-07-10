@@ -17,8 +17,6 @@ public enum CardLabel {
 
     @Override
     public String toString() {
-        return "CardLabel{" +
-                "value='" + value + '\'' +
-                '}';
+        return value;
     }
 }

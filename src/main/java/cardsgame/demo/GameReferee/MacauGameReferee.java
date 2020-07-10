@@ -37,6 +37,6 @@ public class MacauGameReferee implements GameReferee{
         if(first.getNumber().equals(CardNumber.Ace)){
             return new MoveFeedback("Keep playing",GameEvent.GOOD_MOVE);
         }
-        return new MoveFeedback("Move your card back, it is a wrong cards",GameEvent.ERROR);
+        return new MoveFeedback("You can't put " + next.getNumber().toString() + " of " + next.getLabel().toString() +" right now, check your move !",GameEvent.ERROR);
     }
 }

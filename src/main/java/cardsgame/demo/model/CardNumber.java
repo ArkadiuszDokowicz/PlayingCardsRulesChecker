@@ -29,8 +29,6 @@ public enum CardNumber {
 
     @Override
     public String toString() {
-        return "CardNumber{" +
-                "value='" + value + '\'' +
-                '}';
-    }
+            return value;
+     }
 }
